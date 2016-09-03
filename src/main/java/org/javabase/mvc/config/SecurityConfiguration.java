@@ -20,17 +20,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 		@Autowired
 	    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-	        auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("USER");
+			auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
 	    }
 	     
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	       
 	      http.authorizeRequests()
-	        .antMatchers("/", "/home").permitAll()
-	        .antMatchers("/admin/**").access("hasRole('ADMIN')")
-	        .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-	        .and().formLogin().loginPage("/login")
+	        //.antMatchers("/", "/home").permitAll()
+	      	.antMatchers("/**").authenticated()
+//	        .antMatchers("/**").access("hasRole('ADMIN')")
+//	        .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+	        .and().formLogin()
 	        .usernameParameter("username").passwordParameter("password")
 	        .and().csrf()
 	        .and().exceptionHandling().accessDeniedPage("/Access_Denied");
