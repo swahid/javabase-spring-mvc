@@ -26,12 +26,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	       
-	      http.authorizeRequests()
-	        //.antMatchers("/", "/home").permitAll()
-	      	.antMatchers("/**").authenticated()
-//	        .antMatchers("/**").access("hasRole('ADMIN')")
+	    	http.authorizeRequests()
+	    	.antMatchers("/resources/**").permitAll()
+	        .antMatchers("/login").permitAll()
+	        .antMatchers("/**").authenticated()
 //	        .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-	        .and().formLogin()
+	        .and().formLogin().loginPage("/login")
 	        .usernameParameter("username").passwordParameter("password")
 	        .and().csrf()
 	        .and().exceptionHandling().accessDeniedPage("/Access_Denied");
