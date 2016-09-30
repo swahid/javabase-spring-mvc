@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Login page</title>
+        <title>Sign in Login</title>
         <link href="<c:url value='/resources/css/login.css' />" rel="stylesheet"></link>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="<c:url value='/resources/js/login.js' />"></script>
     </head>
  
